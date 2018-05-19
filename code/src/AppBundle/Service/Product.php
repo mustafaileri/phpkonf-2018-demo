@@ -1,4 +1,5 @@
 <?php
+
 namespace AppBundle\Service;
 
 use AppBundle\Repository\ProductRepository;
@@ -9,7 +10,7 @@ class Product
     /** @var  ProductRepository $productRepository */
     private $productRepository;
 
-    public function __construct(ProductRepository $productRepository)
+    public function __construct (ProductRepository $productRepository)
     {
         $this->productRepository = $productRepository;
     }
@@ -19,7 +20,7 @@ class Product
      * @return null|object
      * @throws \Exception
      */
-    public function getProduct($id)
+    public function getProduct ($id)
     {
         $product = $this->productRepository->find($id);
         if (!$product instanceof \AppBundle\Entity\Product) {
@@ -31,7 +32,7 @@ class Product
     /**
      * @throws \Exception
      */
-    public function getProducts()
+    public function getProducts ()
     {
         $products = $this->productRepository->findAll();
         if (!$products || sizeof($products) < 1) {
@@ -44,7 +45,7 @@ class Product
      * @param $categoryId
      * @throws \Exception
      */
-    public function getProductsByCategory($categoryId)
+    public function getProductsByCategory ($categoryId)
     {
         $categoryProducts = $this->productRepository->findBy(["category" => $categoryId]);
 
@@ -57,7 +58,7 @@ class Product
      * @param $brandId
      * @throws \Exception
      */
-    public function getProductsByBrand($brandId)
+    public function getProductsByBrand ($brandId)
     {
         $brandProducts = $this->productRepository->findBy(["brand" => $brandId]);
 

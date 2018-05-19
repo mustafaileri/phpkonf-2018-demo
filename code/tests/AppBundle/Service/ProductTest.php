@@ -1,4 +1,5 @@
 <?php
+
 namespace Tests\AppBundle\Service;
 
 
@@ -12,12 +13,12 @@ class ProductTest extends WebTestCase
     /** @var  \PHPUnit_Framework_MockObject_MockObject */
     private $productRepositoryMock;
 
-    public function setUp()
+    public function setUp ()
     {
         $this->productRepositoryMock = $this->getMockBuilder(ProductRepository::class)->disableOriginalConstructor()->setMethods(["find", "findAll"])->getMock();
     }
 
-    public function testGetProduct()
+    public function testGetProduct ()
     {
         $mockProductEntity = new \AppBundle\Entity\Product();
         $mockProductEntity->setName("Test");
@@ -30,7 +31,7 @@ class ProductTest extends WebTestCase
         $this->assertTrue($res->getName() == "Test");
     }
 
-    public function testGetProductFail()
+    public function testGetProductFail ()
     {
         $this->productRepositoryMock->expects($this->any())->method("find")->with(2)->willThrowException(new \Exception("Product not found."));
         $productService = new Product($this->productRepositoryMock);
@@ -40,7 +41,7 @@ class ProductTest extends WebTestCase
         $productService->getProduct(2);
     }
 
-    public function testGetProducts()
+    public function testGetProducts ()
     {
         $product1 = new \AppBundle\Entity\Product();
         $product1->setName("test");

@@ -1,4 +1,5 @@
 <?php
+
 namespace AppBundle\DataFixtures\ORM;
 
 
@@ -18,13 +19,13 @@ class LoadProductData implements FixtureInterface, ContainerAwareInterface
      */
     private $container;
 
-    public function setContainer(ContainerInterface $container = null)
+    public function setContainer (ContainerInterface $container = null)
     {
         $this->container = $container;
     }
 
     public
-    function load(ObjectManager $manager)
+    function load (ObjectManager $manager)
     {
         /** @var CategoryRepository $categoryRepository */
         $categoryRepository = $this->container->get("category_repository");
@@ -55,7 +56,7 @@ class LoadProductData implements FixtureInterface, ContainerAwareInterface
     }
 
     public
-    function getOrder()
+    function getOrder ()
     {
         return 3;
     }

@@ -1,4 +1,5 @@
 <?php
+
 namespace Tests\AppBundle\Service;
 
 
@@ -12,12 +13,12 @@ class CategoryTest extends WebTestCase
     /** @var  \PHPUnit_Framework_MockObject_MockObject */
     private $categoryRepositoryMock;
 
-    public function setUp()
+    public function setUp ()
     {
         $this->categoryRepositoryMock = $this->getMockBuilder(CategoryRepository::class)->disableOriginalConstructor()->setMethods(["find", "findAll"])->getMock();
     }
 
-    public function testGetCategory()
+    public function testGetCategory ()
     {
         $mockCategoryEntity = new \AppBundle\Entity\Category();
         $mockCategoryEntity->setName("Test")->setSlugUrl("test");
@@ -31,7 +32,7 @@ class CategoryTest extends WebTestCase
         $this->assertTrue($res->getSlugUrl() == "test");
     }
 
-    public function testGetCategoryFail()
+    public function testGetCategoryFail ()
     {
         $this->categoryRepositoryMock->expects($this->any())->method("find")->with(2)->willThrowException(new \Exception("Category not found."));
         $categoryService = new Category($this->categoryRepositoryMock);
@@ -41,7 +42,7 @@ class CategoryTest extends WebTestCase
         $categoryService->getCategory(2);
     }
 
-    public function testGetCategories()
+    public function testGetCategories ()
     {
         $category1 = new \AppBundle\Entity\Category();
         $category1->setName("test")->setSlugUrl("test");

@@ -11,7 +11,7 @@ class CategoryController extends Controller
     /**
      * @Route("/categories", name="categories")
      */
-    public function indexAction()
+    public function indexAction ()
     {
         /** @var Category $categoryService */
         $categoryService = $this->get("category_service");
@@ -28,7 +28,7 @@ class CategoryController extends Controller
     /**
      * @Route("categories/{id}", name="category_detail")
      */
-    public function detailAction($id)
+    public function detailAction ($id)
     {
         /** @var Category $categoryService */
         $categoryService = $this->get('category_service');

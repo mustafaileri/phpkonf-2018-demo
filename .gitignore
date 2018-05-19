@@ -49,3 +49,4 @@ code/test-reports/
 .DS_Store
 .sonar_cache
 code/.scannerwork
+.idea

@@ -6,7 +6,7 @@
             <b>Products</b>
             <ul>
                 {% for product in products %}
-                <li><a href="{{ url('product_detail', {'id':product.id}) }}">{{ product.name }}</a></li>
+                    <li><a href="{{ url('product_detail', {'id':product.id}) }}">{{ product.name }}</a></li>
                 {% endfor %}
             </ul>
         </div>

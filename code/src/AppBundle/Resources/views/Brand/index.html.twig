@@ -6,7 +6,7 @@
             <b>Brands</b>
             <ul>
                 {% for brand in brands %}
-                <li><a href="{{ url('brand_detail', {'id':brand.id}) }}">{{ brand.name }}</a></li>
+                    <li><a href="{{ url('brand_detail', {'id':brand.id}) }}">{{ brand.name }}</a></li>
                 {% endfor %}
             </ul>
         </div>

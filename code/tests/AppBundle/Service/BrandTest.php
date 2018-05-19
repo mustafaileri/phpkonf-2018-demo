@@ -1,4 +1,5 @@
 <?php
+
 namespace Tests\AppBundle\Service;
 
 
@@ -12,12 +13,12 @@ class BrandTest extends WebTestCase
     /** @var  \PHPUnit_Framework_MockObject_MockObject */
     private $brandRepositoryMock;
 
-    public function setUp()
+    public function setUp ()
     {
         $this->brandRepositoryMock = $this->getMockBuilder(BrandRepository::class)->disableOriginalConstructor()->setMethods(["find", "findAll"])->getMock();
     }
 
-    public function testGetBrand()
+    public function testGetBrand ()
     {
         $mockBrandEntity = new \AppBundle\Entity\Brand();
         $mockBrandEntity->setName("Test")->setSlugUrl("test");
@@ -31,7 +32,7 @@ class BrandTest extends WebTestCase
         $this->assertTrue($res->getSlugUrl() == "test");
     }
 
-    public function testGetBrandFail()
+    public function testGetBrandFail ()
     {
         $this->brandRepositoryMock->expects($this->any())->method("find")->with(2)->willThrowException(new \Exception("Brand not found."));
         $brandService = new Brand($this->brandRepositoryMock);
@@ -41,7 +42,7 @@ class BrandTest extends WebTestCase
         $brandService->getBrand(2);
     }
 
-    public function testGetBrands()
+    public function testGetBrands ()
     {
         $brand1 = new \AppBundle\Entity\Brand();
         $brand1->setName("test")->setSlugUrl("test");

@@ -10,7 +10,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 
 class LoadCategoryData implements FixtureInterface
 {
-    public function load(ObjectManager $manager)
+    public function load (ObjectManager $manager)
     {
         $slugify = new Slugify();
         for ($i = 0; $i <= 10; $i++) {
@@ -22,7 +22,7 @@ class LoadCategoryData implements FixtureInterface
         $manager->flush();
     }
 
-    public function getOrder()
+    public function getOrder ()
     {
         return 1;
     }

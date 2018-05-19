@@ -13,7 +13,7 @@ class ProductController extends Controller
      * @Route("/products", name="products")
      */
 
-    public function indexAction()
+    public function indexAction ()
     {
         /** @var Product $productService */
         $productService = $this->get('product_service');
@@ -25,7 +25,7 @@ class ProductController extends Controller
      * @Route("/products/{id}", name="product_detail")
      */
 
-    public function detailAction($id)
+    public function detailAction ($id)
     {
         /** @var Product $productService */
         $productService = $this->get('product_service');

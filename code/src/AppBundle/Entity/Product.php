@@ -65,7 +65,7 @@ class Product
      *
      * @return int
      */
-    public function getId()
+    public function getId ()
     {
         return $this->id;
     }
@@ -77,7 +77,7 @@ class Product
      *
      * @return Product
      */
-    public function setName($name)
+    public function setName ($name)
     {
         $this->name = $name;
 
@@ -89,7 +89,7 @@ class Product
      *
      * @return string
      */
-    public function getName()
+    public function getName ()
     {
         return $this->name;
     }
@@ -101,7 +101,7 @@ class Product
      *
      * @return Product
      */
-    public function setPrice($price)
+    public function setPrice ($price)
     {
         $this->price = $price;
 
@@ -113,7 +113,7 @@ class Product
      *
      * @return string
      */
-    public function getPrice()
+    public function getPrice ()
     {
         return $this->price;
     }
@@ -125,7 +125,7 @@ class Product
      *
      * @return Product
      */
-    public function setDescription($description)
+    public function setDescription ($description)
     {
         $this->description = $description;
 
@@ -137,7 +137,7 @@ class Product
      *
      * @return string
      */
-    public function getDescription()
+    public function getDescription ()
     {
         return $this->description;
     }
@@ -145,7 +145,7 @@ class Product
     /**
      * @return mixed
      */
-    public function getCategory()
+    public function getCategory ()
     {
         return $this->category;
     }
@@ -154,7 +154,7 @@ class Product
      * @param Category $category
      * @return Product
      */
-    public function setCategory(Category $category)
+    public function setCategory (Category $category)
     {
         $this->category = $category;
 
@@ -164,7 +164,7 @@ class Product
     /**
      * @return \AppBundle\Entity\Brand
      */
-    public function getBrand()
+    public function getBrand ()
     {
         return $this->brand;
     }
@@ -173,7 +173,7 @@ class Product
      * @param \AppBundle\Entity\Brand $brand
      * @return Product
      */
-    public function setBrand(Brand $brand)
+    public function setBrand (Brand $brand)
     {
         $this->brand = $brand;
         return $this;

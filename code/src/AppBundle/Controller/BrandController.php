@@ -11,7 +11,7 @@ class BrandController extends Controller
     /**
      * @Route("/brands", name="brands")
      */
-    public function indexAction()
+    public function indexAction ()
     {
         /** @var Brand $brandService */
         $brandService = $this->get("brand_service");
@@ -28,7 +28,7 @@ class BrandController extends Controller
     /**
      * @Route("brands/{id}", name="brand_detail")
      */
-    public function detailAction($id)
+    public function detailAction ($id)
     {
         /** @var Brand $brandService */
         $brandService = $this->get('brand_service');

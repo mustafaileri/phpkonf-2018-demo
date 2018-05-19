@@ -1,4 +1,5 @@
 <?php
+
 namespace AppBundle\Service;
 
 use AppBundle\Repository\CategoryRepository;
@@ -8,7 +9,7 @@ class Category
     /** @var  CategoryRepository $categoryRepository */
     private $categoryRepository;
 
-    public function __construct(CategoryRepository $categoryRepository)
+    public function __construct (CategoryRepository $categoryRepository)
     {
         $this->categoryRepository = $categoryRepository;
     }
@@ -18,7 +19,7 @@ class Category
      * @return null|object
      * @throws \Exception
      */
-    public function getCategory($id)
+    public function getCategory ($id)
     {
         $category = $this->categoryRepository->find($id);
         if (!$category instanceof \AppBundle\Entity\Category) {
@@ -30,10 +31,10 @@ class Category
     /**
      * @throws \Exception
      */
-    public function getCategories()
+    public function getCategories ()
     {
         $categories = $this->categoryRepository->findAll();
-        if (!$categories|| sizeof($categories) < 1) {
+        if (!$categories || sizeof($categories) < 1) {
             throw new \Exception("Categories not found.");
         }
         return $categories;

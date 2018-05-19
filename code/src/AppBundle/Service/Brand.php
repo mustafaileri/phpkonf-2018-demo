@@ -1,4 +1,5 @@
 <?php
+
 namespace AppBundle\Service;
 
 use AppBundle\Repository\BrandRepository;
@@ -8,7 +9,7 @@ class Brand
     /** @var  BrandRepository $brandRepository */
     private $brandRepository;
 
-    public function __construct(BrandRepository $brandRepository)
+    public function __construct (BrandRepository $brandRepository)
     {
         $this->brandRepository = $brandRepository;
     }
@@ -18,7 +19,7 @@ class Brand
      * @return null|object
      * @throws \Exception
      */
-    public function getBrand($id)
+    public function getBrand ($id)
     {
         $brand = $this->brandRepository->find($id);
         if (!$brand instanceof \AppBundle\Entity\Brand) {
@@ -31,10 +32,10 @@ class Brand
      * @return array
      * @throws \Exception
      */
-    public function getBrands()
+    public function getBrands ()
     {
         $brands = $this->brandRepository->findAll();
-        if (!$brands|| sizeof($brands) < 1) {
+        if (!$brands || sizeof($brands) < 1) {
             throw new \Exception("Brands not found.");
         }
         return $brands;

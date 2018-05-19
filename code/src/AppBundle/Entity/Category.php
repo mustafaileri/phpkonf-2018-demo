@@ -42,7 +42,7 @@ class Category
      */
     private $products;
 
-    public function __construct()
+    public function __construct ()
     {
         $this->products = new ArrayCollection();
     }
@@ -52,7 +52,7 @@ class Category
      *
      * @return int
      */
-    public function getId()
+    public function getId ()
     {
         return $this->id;
     }
@@ -64,7 +64,7 @@ class Category
      *
      * @return Category
      */
-    public function setName($name)
+    public function setName ($name)
     {
         $this->name = $name;
 
@@ -76,7 +76,7 @@ class Category
      *
      * @return string
      */
-    public function getName()
+    public function getName ()
     {
         return $this->name;
     }
@@ -88,7 +88,7 @@ class Category
      *
      * @return Category
      */
-    public function setSlugUrl($slugUrl)
+    public function setSlugUrl ($slugUrl)
     {
         $this->slugUrl = $slugUrl;
 
@@ -100,7 +100,7 @@ class Category
      *
      * @return string
      */
-    public function getSlugUrl()
+    public function getSlugUrl ()
     {
         return $this->slugUrl;
     }
@@ -109,7 +109,7 @@ class Category
      * @param Product $product
      * @return $this
      */
-    public function addProduct(Product $product)
+    public function addProduct (Product $product)
     {
         $this->products->add($product);
         return $this;
@@ -118,7 +118,7 @@ class Category
     /**
      * @return ArrayCollection
      */
-    public function getProducts()
+    public function getProducts ()
     {
         return $this->products;
     }
