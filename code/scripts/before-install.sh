@@ -1,2 +1,2 @@
 #/bin/bash
-rm -rf /var/www/html/*
+chmod 777 /var/log/* -R
