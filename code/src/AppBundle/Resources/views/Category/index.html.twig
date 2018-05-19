@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div id="wrapper">
+        <div id="container">
+            <b>Categories</b>
+            <ul>
+                {% for category in categories %}
+                <li><a href="{{ url('category_detail', {'id':category.id}) }}">{{ category.name }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endblock %}

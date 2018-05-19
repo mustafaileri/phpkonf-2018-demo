@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div id="wrapper">
+        <div id="container">
+            <b>Brands</b>
+            <ul>
+                {% for brand in brands %}
+                <li><a href="{{ url('brand_detail', {'id':brand.id}) }}">{{ brand.name }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endblock %}

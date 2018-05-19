@@ -1,0 +1,15 @@
+default:
+  suites:
+    default:
+      contexts:
+        - FeatureContext
+  extensions:
+    Behat\MinkExtension:
+      base_url: 'http://nginx'
+      default_session: selenium_chrome_session
+      sessions:
+        selenium_chrome_session:
+          selenium2:
+            browser: chrome
+            wd_host: "http://selenium:25550/wd/hub"
+            capabilities: { "browserName": "chrome", "browser": "chrome", "version":  "2.26"}

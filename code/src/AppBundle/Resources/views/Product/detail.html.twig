@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div id="wrapper">
+        <div id="container">
+            <h1>{{ data.name }}</h1>
+            <p>{{ data.description }}</p>
+            {% if data.category %}
+                <p>Category: <a
+                            href="{{ url("category_detail", {'id':data.category.id }) }}">{{ data.category.name }}</a>
+                </p>
+            {% endif %}
+            {% if data.brand %}
+                <p>Brand: <a href="{{ url("brand_detail", {'id':data.brand.id }) }}">{{ data.brand.name }}</a></p>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

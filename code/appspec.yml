@@ -1,0 +1,14 @@
+# This is an appspec.yml template file for use with AWS CodeDeploy.
+#   http://docs.aws.amazon.com/codedeploy/latest/userguide/app-spec-ref.html
+version: 0.0
+os: linux
+files:
+  - source: .
+    destination: /var/www/html/
+hooks:
+  BeforeInstall:
+    - location: scripts/before-install.sh
+      runas: root
+  AfterInstall:
+    - location: scripts/after-install.sh
+      runas: root

@@ -1,0 +1,36 @@
+parameters:
+#    parameter_name: value
+
+services:
+  product_repository:
+    class: Doctrine\ORM\EntityRepository
+    factory: ['@doctrine.orm.default_entity_manager', getRepository]
+    arguments:
+      - AppBundle\Entity\Product
+
+  category_repository:
+    class: Doctrine\ORM\EntityRepository
+    factory: ['@doctrine.orm.default_entity_manager', getRepository]
+    arguments:
+      - AppBundle\Entity\Category
+
+  brand_repository:
+    class: Doctrine\ORM\EntityRepository
+    factory: ['@doctrine.orm.default_entity_manager', getRepository]
+    arguments:
+      - AppBundle\Entity\Brand
+
+  product_service:
+    class: AppBundle\Service\Product
+    arguments:
+      - "@product_repository"
+
+  category_service:
+    class: AppBundle\Service\Category
+    arguments:
+      - "@category_repository"
+
+  brand_service:
+    class: AppBundle\Service\Brand
+    arguments:
+      - "@brand_repository"

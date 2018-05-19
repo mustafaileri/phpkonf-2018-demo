@@ -1,48 +1,51 @@
 # Cache and logs (Symfony2)
-/app/cache/*
-/app/logs/*
-!app/cache/.gitkeep
-!app/logs/.gitkeep
+:/code/app/cache/*
+/code/app/logs/*
+!code/app/cache/.gitkeep
+!code/app/logs/.gitkeep
 
 # Email spool folder
-/app/spool/*
+/code/app/spool/*
 
 # Cache, session files and logs (Symfony3)
-/var/cache/*
-/var/logs/*
-/var/sessions/*
-!var/cache/.gitkeep
-!var/logs/.gitkeep
-!var/sessions/.gitkeep
+/code/var/cache/*
+/code/var/logs/*
+/code/var/sessions/*
+!code/var/cache/.gitkeep
+!code/var/logs/.gitkeep
+!code/var/sessions/.gitkeep
 
 # Parameters
-/app/config/parameters.yml
-/app/config/parameters.ini
+/code/app/config/parameters.yml
+/code/app/config/parameters.ini
 
 # Managed by Composer
-/app/bootstrap.php.cache
-/var/bootstrap.php.cache
-/bin/*
-!bin/console
-!bin/symfony_requirements
-/vendor/
+/code/app/bootstrap.php.cache
+/code/var/bootstrap.php.cache
+/code/bin/*
+!code/bin/console
+!code/bin/symfony_requirements
 
 # Assets and user uploads
-/web/bundles/
-/web/uploads/
+/code/web/bundles/
+/code/web/uploads/
 
 # PHPUnit
-/app/phpunit.xml
+/code/app/phpunit.xml
 /phpunit.xml
 
 # Build data
 /build/
 
-# Composer PHAR
-/composer.phar
-
 # Backup entities generated with doctrine:generate:entities command
 **/Entity/*~
 
-# Embedded web-server pid file
-/.web-server-pid
+code/vendor/
+.env
+.data/**
+logs/**
+code/test-reports/
+**/*/.DS_Store
+.DS_Store
+.sonar_cache
+code/.scannerwork

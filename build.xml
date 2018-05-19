@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Test Project Build" default="build">
+    <target name="build" depends="docker-down, docker-up, composer-install, load-fixtures, run-tests, run-sonar, check-sonar-result, docker-down"/>
+    <target name="docker-down">
+        <exec command="docker-compose" failonerror="true">
+            <arg line="kill"/>
+        </exec>
+        <exec command="docker-compose" failonerror="true">
+            <arg line="down -v"/>
+        </exec>
+        <exec command="docker-compose" failonerror="true">
+            <arg line="rm -f"/>
+        </exec>
+    </target>
+
+    <target name="docker-up">
+        <exec command="cp" failonerror="true">
+            <arg line=".env.test .env"/>
+        </exec>
+        <exec command="docker-compose" failonerror="true">
+            <arg line="build --force-rm"/>
+        </exec>
+        <exec command="docker-compose" failonerror="true">
+            <arg line="up -d --no-recreate"/>
+        </exec>
+        <exec command="docker-compose" failonerror="true">
+            <arg line="start"/>
+        </exec>
+    </target>
+
+    <target name="composer-install">
+        <exec command="docker-compose" failonerror="true">
+            <arg line="exec -T web composer install --working-dir=/var/www/symfony"/>
+        </exec>
+    </target>
+
+    <target name="load-fixtures">
+        <exec command="docker-compose" failonerror="true">
+            <arg line="exec -T web /bin/bash /scripts/mysql-connection-checker.sh"/>
+        </exec>
+
+        <exec command="docker-compose" failonerror="true">
+            <arg line="exec -T web /var/www/symfony/bin/console  doctrine:schema:update --force"/>
+        </exec>
+
+        <exec command="docker-compose" failonerror="true">
+            <arg line="exec -T web /var/www/symfony/bin/console doctrine:fixtures:load"/>
+        </exec>
+    </target>
+
+    <target name="run-tests">
+        <parallel>
+            <antcall target="run-phpunit"/>
+            <antcall target="run-behat"/>
+        </parallel>
+    </target>
+
+    <target name="run-phpunit">
+        <exec executable="docker-compose" failonerror="true">
+            <arg line="exec -T web  /var/www/symfony/vendor/phpunit/phpunit/phpunit -c /var/www/symfony/phpunit.xml.dist --log-junit /var/www/symfony/test-reports/unit-tests.xml"/>
+        </exec>
+    </target>
+
+    <target name="run-behat">
+        <parallel>
+            <antcall target="run-behat-test">
+                <param name="env.tag" value="homepage"></param>
+            </antcall>
+            <antcall target="run-behat-test">
+                <param name="env.tag" value="product"></param>
+            </antcall>
+            <antcall target="run-behat-test">
+                <param name="env.tag" value="category"></param>
+            </antcall>
+            <antcall target="run-behat-test">
+                <param name="env.tag" value="brand"></param>
+            </antcall>
+        </parallel>
+    </target>
+
+    <target name="run-behat-test">
+        <exec executable="docker-compose" failonerror="true">
+            <arg line="exec -T web /var/www/symfony/bin/behat --config /var/www/symfony/behat.yml --tags=${env.tag} -f junit --out=/var/www/symfony/test-reports/${env.tag} -f progress --out=std"/>
+        </exec>
+    </target>
+    <target name="run-sonar">
+        <exec executable="docker-compose" failonerror="true">
+            <arg line="exec -T web /bin/bash /scripts/sonar-runner.sh"/>
+        </exec>
+    </target>
+    <target name="check-sonar-result">
+        <exec executable="python" failonerror="true">
+            <arg line=" scripts/check-sonar-result.py"/>
+        </exec>
+
+    </target>        
+</project>
