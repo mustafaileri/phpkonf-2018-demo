@@ -1,4 +1,4 @@
-#/bin/bash
+#!/usr/bin/env bash
 sh /scripts/sonar-scanner/bin/sonar-scanner   \
 -Dsonar.projectKey=PhpKonf   \
 -Dsonar.organization=mustafaileri-github   \

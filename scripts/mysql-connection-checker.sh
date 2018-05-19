@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 dbuser="root"
 dbpass="root"
 dbhost="db"
